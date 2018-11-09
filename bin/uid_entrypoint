@@ -1,0 +1,10 @@
+#!/bin/sh
+if ! whoami &> /dev/null; then
+  if [ -w /etc/passwd ]; then
+    echo "${USER_NAME:-www-data}:x:$(id -u):0:${USER_NAME:-www-data} user:${HOME}:/sbin/nologin" >> /etc/passwd
+  fi
+fi
+
+sed -i "s|${APP_ROOT}|${APP_ROOT}${DOCUMENT_ROOT}|g" /etc/apache2/sites-available/000-default.conf
+
+exec "$@"
