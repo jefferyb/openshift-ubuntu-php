@@ -33,6 +33,9 @@ RUN apt-get update && apt-get dist-upgrade -y && \
   php-fpm \
   php-dev \
   php-curl \
+  php-imagick \
+  php-recode \
+  php-tidy \
   less \
   vim \
   wget \
